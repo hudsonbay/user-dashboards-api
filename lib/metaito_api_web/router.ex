@@ -38,6 +38,8 @@ defmodule MetaitoApiWeb.Router do
     pipe_through [:api, :auth]
 
     resources "/notes", NoteController, except: [:new, :edit]
+    resources "/links", LinkController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
