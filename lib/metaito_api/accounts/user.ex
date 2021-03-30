@@ -2,7 +2,7 @@ defmodule MetaitoApi.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias MetaitoApi.Resources.Note
+  alias MetaitoApi.Resources.{Note, Link}
 
   @derive {Inspect, except: [:password]}
   schema "users" do
@@ -12,6 +12,7 @@ defmodule MetaitoApi.Accounts.User do
     field :confirmed_at, :naive_datetime
 
     has_many(:notes, Note, on_replace: :delete)
+    has_many(:links, Link, on_replace: :delete)
 
     timestamps()
   end
@@ -37,6 +38,7 @@ defmodule MetaitoApi.Accounts.User do
     user
     |> cast(attrs, [:email, :password])
     |> cast_assoc(:notes)
+    |> cast_assoc(:links)
     |> validate_email()
     |> validate_password(opts)
   end
