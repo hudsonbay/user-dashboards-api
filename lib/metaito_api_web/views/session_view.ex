@@ -6,7 +6,8 @@ defmodule MetaitoApiWeb.SessionView do
       status: :ok,
       data: %{
         token: jwt,
-        email: user.email
+        email: user.email,
+        id: user.id
       },
       message:
         "You are successfully logged in! Add this token to authorization header to make authorized requests."

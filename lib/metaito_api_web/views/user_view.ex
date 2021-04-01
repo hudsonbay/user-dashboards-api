@@ -9,6 +9,7 @@ defmodule MetaitoApiWeb.UserView do
 
   def render("user_with_resources.json", %{user: user}) do
     %{
+        id: user.id,
         email: user.email,
         inserted_at: user.inserted_at,
         notes: render_many(user.notes, NoteView, "note.json"),
