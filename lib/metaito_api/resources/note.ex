@@ -2,14 +2,13 @@ defmodule MetaitoApi.Resources.Note do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias MetaitoApi.Accounts.User
+  alias MetaitoApi.Profile.Dashboard
 
   schema "notes" do
     field :text, :string
     field :title, :string
 
-    belongs_to(:user, User)
-
+    belongs_to(:dashboard, Dashboard)
 
     timestamps()
   end
@@ -17,8 +16,8 @@ defmodule MetaitoApi.Resources.Note do
   @doc false
   def changeset(note, attrs) do
     note
-    |> cast(attrs, [:title, :text, :user_id])
-    |> validate_required([:title, :text, :user_id])
-    |> assoc_constraint(:user)
+    |> cast(attrs, [:title, :text, :dashboard_id])
+    |> validate_required([:title, :text, :dashboard_id])
+    |> assoc_constraint(:dashboard)
   end
 end

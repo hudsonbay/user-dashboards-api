@@ -11,8 +11,6 @@ defmodule MetaitoApiWeb.LinkView do
   end
 
   def render("link.json", %{link: link}) do
-    %{id: link.id,
-      title: link.title,
-      url: link.url}
+    %{id: link.id, title: link.title, url: link.url}
   end
 end

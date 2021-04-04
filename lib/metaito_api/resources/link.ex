@@ -2,13 +2,13 @@ defmodule MetaitoApi.Resources.Link do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias MetaitoApi.Accounts.User
+  alias MetaitoApi.Profile.Dashboard
 
   schema "links" do
     field :title, :string
     field :url, EctoFields.URL
 
-    belongs_to(:user, User)
+    belongs_to(:dashboard, Dashboard)
 
     timestamps()
   end
@@ -16,8 +16,8 @@ defmodule MetaitoApi.Resources.Link do
   @doc false
   def changeset(link, attrs) do
     link
-    |> cast(attrs, [:title, :url, :user_id])
-    |> validate_required([:title, :url, :user_id])
-    |> assoc_constraint(:user)
+    |> cast(attrs, [:title, :url, :dashboard_id])
+    |> validate_required([:title, :url, :dashboard_id])
+    |> assoc_constraint(:dashboard)
   end
 end

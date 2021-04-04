@@ -5,11 +5,11 @@ defmodule MetaitoApi.Repo.Migrations.CreateNotes do
     create table(:notes) do
       add :title, :string
       add :text, :text
-      add :user_id, references(:users, on_delete: :delete_all), null: false
+      add :dashboard_id, references(:dashboards, on_delete: :delete_all), null: false
 
       timestamps()
     end
 
-    create index(:notes, [:user_id])
+    create index(:notes, [:dashboard_id])
   end
 end

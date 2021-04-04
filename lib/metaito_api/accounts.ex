@@ -57,7 +57,16 @@ defmodule MetaitoApi.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id) |> Repo.preload([:notes, :links])
+  def get_user!(id) do
+    User
+    |> where([user], user.id == ^id)
+    |> join(:left, [user], dashboards in assoc(user, :dashboards))
+    |> join(:left, [user, dashboards], links in assoc(dashboards, :links))
+    |> join(:left, [user, dashboards], notes in assoc(dashboards, :notes))
+    |> preload([user, dashboards, links, notes], [dashboards: {dashboards, links: links, notes: notes}])
+    |> Repo.one
+  end
+
 
   ## User registration
 

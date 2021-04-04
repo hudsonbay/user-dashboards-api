@@ -37,6 +37,7 @@ defmodule MetaitoApiWeb.Router do
   scope "/api", MetaitoApiWeb do
     pipe_through [:api, :auth]
 
+    resources "/dashboards", DashboardController, except: [:new, :edit]
     resources "/notes", NoteController, except: [:new, :edit]
     resources "/links", LinkController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]

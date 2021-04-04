@@ -11,8 +11,6 @@ defmodule MetaitoApiWeb.NoteView do
   end
 
   def render("note.json", %{note: note}) do
-    %{id: note.id,
-      title: note.title,
-      text: note.text}
+    %{id: note.id, title: note.title, text: note.text}
   end
 end

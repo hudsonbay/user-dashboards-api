@@ -31,5 +31,5 @@ config :phoenix, :json_library, Jason
 import_config "#{Mix.env()}.exs"
 
 config :metaito_api, MetaitoApi.Guardian,
-       issuer: "metaito_api",
-       secret_key: "ItbkOIr5Mg/2cgX7csPuTRKno4zAnzN9IbMgJ05EHFd3qNZ7d21FW2vrfMmYgXNG"
+  issuer: "metaito_api",
+  secret_key: "ItbkOIr5Mg/2cgX7csPuTRKno4zAnzN9IbMgJ05EHFd3qNZ7d21FW2vrfMmYgXNG"

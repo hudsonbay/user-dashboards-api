@@ -2,7 +2,7 @@ defmodule MetaitoApi.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias MetaitoApi.Resources.{Note, Link}
+  alias MetaitoApi.Profile.Dashboard
 
   @derive {Inspect, except: [:password]}
   schema "users" do
@@ -11,8 +11,7 @@ defmodule MetaitoApi.Accounts.User do
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
 
-    has_many(:notes, Note, on_replace: :delete)
-    has_many(:links, Link, on_replace: :delete)
+    has_many(:dashboards, Dashboard, on_replace: :delete)
 
     timestamps()
   end
@@ -37,8 +36,7 @@ defmodule MetaitoApi.Accounts.User do
   def registration_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:email, :password])
-    |> cast_assoc(:notes)
-    |> cast_assoc(:links)
+    |> cast_assoc(:dashboards)
     |> validate_email()
     |> validate_password(opts)
   end
