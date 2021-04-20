@@ -1,4 +1,6 @@
-# MetaitoApi
+# User Dashboards API
+
+The frontend app that consumes this API can be found as https://github.com/hudsonbay/vue-frontend-dashboards
 
 To start your Phoenix server:
 
