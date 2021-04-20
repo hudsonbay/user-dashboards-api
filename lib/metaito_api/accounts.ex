@@ -63,10 +63,11 @@ defmodule MetaitoApi.Accounts do
     |> join(:left, [user], dashboards in assoc(user, :dashboards))
     |> join(:left, [user, dashboards], links in assoc(dashboards, :links))
     |> join(:left, [user, dashboards], notes in assoc(dashboards, :notes))
-    |> preload([user, dashboards, links, notes], [dashboards: {dashboards, links: links, notes: notes}])
-    |> Repo.one
+    |> preload([user, dashboards, links, notes],
+      dashboards: {dashboards, links: links, notes: notes}
+    )
+    |> Repo.one()
   end
-
 
   ## User registration
 

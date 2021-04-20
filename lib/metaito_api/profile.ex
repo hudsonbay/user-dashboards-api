@@ -35,7 +35,7 @@ defmodule MetaitoApi.Profile do
       ** (Ecto.NoResultsError)
 
   """
-  def get_dashboard!(id), do: Repo.get!(Dashboard, id)  |> Repo.preload([:notes, :links])
+  def get_dashboard!(id), do: Repo.get!(Dashboard, id) |> Repo.preload([:notes, :links])
 
   @doc """
   Creates a dashboard.
